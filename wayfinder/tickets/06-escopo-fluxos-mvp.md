@@ -1,10 +1,29 @@
 ---
 title: "Escopo e fluxos mínimos do MVP (duas frentes)"
 labels: [wayfinder:grilling]
-status: open
-assignee:
+status: closed
+assignee: paulovitor
 blocked_by: [01, 02, 04, 05]
 ---
+
+## Resolution
+
+MVP definido via grilling (resolvido à frente dos blockers 01/02/04, cujo essencial já estava nos
+docs). **Espinha evento-primeiro:** home = mapa de eventos próximos ⇄ toggle lista (cards). **Frente
+2:** uma comunidade/chat aberta por evento; compatibilidade é **sinal** (agregado + interesses em
+comum + ícone de força HTML/CSS no perfil), **não** matchmaker. **Frente 1:** grupo privado (mesma
+primitiva de chat), convite por link/WhatsApp, evento fixado. **Onboarding leve:** Google + interesses
++ localização + termos com divulgação de uso acadêmico; verificação SMS **just-in-time** antes de
+interagir com estranhos. **Segurança:** denunciar/bloquear + selo verificado + aceite de diretrizes +
+aviso de 1º encontro.
+
+**Fluxos a desenhar (MUST, nesta ordem):** 1) Onboarding & consentimento; 2) Primitiva de chat (reusada
+3×); 3) Home mapa/lista; 4) Detalhe do evento; 5) Comunidade do evento (chat aberto); 6) Perfil/detalhe
+do usuário (c/ ícone de compatibilidade); 7) Grupo privado.
+
+**Asset (user stories p/ design):** `docs/mvp-user-stories.md`.
+
+**Decisão de escopo:** "mesas compatíveis" (matchmaker da tese) saem do MVP → fronteira seguinte.
 
 ## Question
 

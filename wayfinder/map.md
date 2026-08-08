@@ -56,9 +56,18 @@ não é repositório). Frontier = tickets `open`, com `blocked_by` vazio ou só 
   fonte primária (plugável, dado litígio Google×SerpApi), Sympla como plano B via parceria, Eventbrite
   descartada. Isolar ingestão atrás de interface "provedor de eventos". Detalhe em
   `research/05-fontes-dados-eventos.md`.
+- [Escopo e fluxos do MVP](tickets/06-escopo-fluxos-mvp.md) — espinha evento-primeiro (home mapa⇄lista);
+  frente 2 = comunidade/chat aberta por evento (compatibilidade é sinal, não matchmaker); frente 1 =
+  grupo privado (mesma primitiva de chat); onboarding leve + verificação SMS just-in-time; 7 fluxos MUST
+  para desenhar. User stories em `docs/mvp-user-stories.md`.
 
 ## Not yet specified
 
+- **"Mesas" compatíveis (matchmaker perfil↔perfil)** — subgrupos pequenos de estranhos formados por
+  compatibilidade; tirados do MVP (só sinal hoje), são a fronteira seguinte do produto e o núcleo a
+  medir na pesquisa.
+- **Votação de evento no grupo privado** e **avaliação pós-evento** — SHOULD, pós-MVP.
+- **Consentimento informado da coorte de pesquisa (Rio)** — fluxo dedicado à parte do onboarding.
 - **Modelo de negócio / monetização** — fora do MVP; revisitar quando a tração existir.
 - **Estratégia galinha-e-ovo da oferta / hosts** — como incentivar quem cria mesas/experiências
   (lado da oferta), além dos eventos ingeridos.
