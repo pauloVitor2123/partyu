@@ -1,0 +1,51 @@
+# ---- OS / editor ----
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.swp
+.idea/
+.vscode/
+*.code-workspace
+
+# ---- Secrets / env ----
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets/
+
+# ---- Node / React Native (base técnica do app) ----
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+dist/
+build/
+.expo/
+.expo-shared/
+*.jks
+*.keystore
+!debug.keystore
+
+# ---- Python (serviço de embeddings) ----
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+
+# ---- Supabase ----
+.branches/
+.temp/
+supabase/.env
+
+# ---- Logs / temporários ----
+*.log
+tmp/
+.cache/
