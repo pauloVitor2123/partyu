@@ -48,6 +48,15 @@ não é repositório). Frontier = tickets `open`, com `blocked_by` vazio ou só 
 
 <!-- índice — uma linha por ticket fechado -->
 
+- [Problema e proposta de valor](tickets/01-problema-proposta-valor.md) — dor primária é a do
+  articulador social (organizar o grupo); dor secundária é o isolado/recém-chegado. Proposta de
+  valor: "o Partyu tira de você o trabalho de organizar: indica o evento certo já com o grupo".
+- [Personas e cenários no Rio](tickets/02-personas-cenarios-rio.md) — três personas: articuladora
+  social, isolado/recém-chegado, criador/host de evento (majoritariamente passivo no MVP). Recorte:
+  18–35 anos, classe média urbana, Rio de Janeiro.
+- [Modelo de dados e sinais](tickets/04-modelo-dados-sinais.md) — sinal de compatibilidade é
+  similaridade pura (interesses + comportamento implícito), sem fator de diversidade explícito no
+  MVP; diversidade fica como direção de pesquisa/roadmap.
 - [Posicionamento competitivo](tickets/03-posicionamento-competitivo.md) — Partyu ocupa o quadrante
   vazio: catálogo de eventos reais + comunidades autocriadas por evento + compatibilidade estruturada
   perfil↔perfil + duas frentes; ninguém combina os quatro. Maior ameaça: Bumble BFF ancorar grupos em
@@ -60,19 +69,34 @@ não é repositório). Frontier = tickets `open`, com `blocked_by` vazio ou só 
   frente 2 = comunidade/chat aberta por evento (compatibilidade é sinal, não matchmaker); frente 1 =
   grupo privado (mesma primitiva de chat); onboarding leve + verificação SMS just-in-time; 7 fluxos MUST
   para desenhar. User stories em `docs/mvp-user-stories.md`.
+- [Confiança, segurança e moderação](tickets/07-confianca-seguranca-moderacao.md) — sanção automática
+  por N denúncias + escalonamento manual prioritário para casos graves; política de conteúdo mínima;
+  selo verificado como único sinal de reputação no MVP.
+- [Camada de pesquisa instrumentada](tickets/08-camada-pesquisa-instrumentada.md) — TCLE dedicado,
+  opt-in explícito e separado do ToS geral, para a coorte formal (≥20, Rio, 2026–2027); telemetria
+  mínima especificada; nenhum atributo sensível coletado para compatibilidade.
+- [Features priorizadas, riscos e visão](tickets/09-features-priorizadas-riscos-visao.md) — **destino
+  alcançado.** Documento de visão final em `docs/PRD-Partyu.md`.
+- [Companhia / Roda — matchmaker perfil↔perfil](tickets/10-companhia-roda-matchmaker.md) — aprofundamento
+  pós-destino da "fronteira seguinte". Ciclo **comunidade → roda → grupo**; roda = recorte pequeno,
+  privado e efêmero da comunidade, semeado pelo matchmaker (sugestão, não formador puro), com admin e
+  ponte para virar grupo. Motor de recomendação (3 operações + menor sofrimento + alavanca de novidade)
+  em `docs/motor-de-recomendacao.md`; glossário em `CONTEXT.md`; ADRs em `docs/adr/`.
 
 ## Not yet specified
 
-- **"Mesas" compatíveis (matchmaker perfil↔perfil)** — subgrupos pequenos de estranhos formados por
-  compatibilidade; tirados do MVP (só sinal hoje), são a fronteira seguinte do produto e o núcleo a
-  medir na pesquisa.
+- **Grafo social (seguir/seguidor)** — seguir/deixar de seguir perfis; contagem de seguidores no
+  detalhe do perfil. Camada social transversal, ainda a especificar.
+- **Depoimentos no perfil** — relato deixado por quem teve experiência real com a pessoa; prova social
+  ligada a confiança/segurança (ticket 07) e forte candidato a métrica de sucesso da roda (ticket 10).
+- **Gamificação** — pontos por seguir/curtir/depor; **bloqueada por "definir recompensa"** (o que os
+  pontos valem ainda é indefinido). Explicitamente futura.
 - **Votação de evento no grupo privado** e **avaliação pós-evento** — SHOULD, pós-MVP.
-- **Consentimento informado da coorte de pesquisa (Rio)** — fluxo dedicado à parte do onboarding.
 - **Modelo de negócio / monetização** — fora do MVP; revisitar quando a tração existir.
-- **Estratégia galinha-e-ovo da oferta / hosts** — como incentivar quem cria mesas/experiências
-  (lado da oferta), além dos eventos ingeridos.
+- **Estratégia galinha-e-ovo da oferta / hosts** — como incentivar quem cria experiências
+  (lado da oferta), além dos eventos ingeridos. É o que destrava o modo "pessoas-primeiro" da roda.
 - **Métricas de sucesso e avaliação formal** da recomendação individual e da compatibilidade em
-  grupo (precisão/revocação; núcleo da fase de pesquisa).
+  grupo (precisão/revocação; núcleo da fase de pesquisa) — detalhado no PRD, seção 11.
 - **Expansão geográfica** além do Rio.
 
 ## Out of scope
