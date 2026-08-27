@@ -26,7 +26,8 @@ social/cultural entre perfis diversos) e formação de grupos.
 **Duas frentes do produto (ambas no MVP):**
 1. Potencializar **grupos que já se conhecem** achando eventos/experiências em comum.
 2. **Entrar em grupos de estranhos** (modelo Nomadtable) — realizado como **chats/comunidades por
-   evento**, auto-criados a partir de eventos ingeridos via APIs públicas (Sympla / Google Events).
+   evento**, auto-criados a partir de eventos ingeridos via APIs públicas (Sympla / Google Events) **ou
+   criados por um anfitrião** dentro do app (ticket 11).
 
 **Decisões de escopo já tomadas:** destino é doc de visão produto-primeiro com pesquisa
 instrumentada (não dois docs separados); as duas frentes entram no MVP → segurança/confiança/
@@ -82,6 +83,12 @@ não é repositório). Frontier = tickets `open`, com `blocked_by` vazio ou só 
   privado e efêmero da comunidade, semeado pelo matchmaker (sugestão, não formador puro), com admin e
   ponte para virar grupo. Motor de recomendação (3 operações + menor sofrimento + alavanca de novidade)
   em `docs/motor-de-recomendacao.md`; glossário em `CONTEXT.md`; ADRs em `docs/adr/`.
+- [Criação de evento pelo usuário (anfitrião)](tickets/11-criacao-evento-anfitriao.md) — ativa o **lado
+  da oferta/hosts** no MVP (antes "Not yet specified"). Mesmo objeto `Evento` com **origem**
+  `ingerido`/`anfitrião`; criação leve estilo NomadTable (título · data/hora · local · categoria +
+  foto/descrição opcionais); local sempre aproximado; entrada aberta com **anfitrião = admin** da
+  comunidade; FAB "+" na home + SMS just-in-time. **Vai para implementação.** Design em
+  `docs/design/prompt-rodada-3-criar-evento.md`.
 
 ## Not yet specified
 
@@ -93,8 +100,9 @@ não é repositório). Frontier = tickets `open`, com `blocked_by` vazio ou só 
   pontos valem ainda é indefinido). Explicitamente futura.
 - **Votação de evento no grupo privado** e **avaliação pós-evento** — SHOULD, pós-MVP.
 - **Modelo de negócio / monetização** — fora do MVP; revisitar quando a tração existir.
-- **Estratégia galinha-e-ovo da oferta / hosts** — como incentivar quem cria experiências
-  (lado da oferta), além dos eventos ingeridos. É o que destrava o modo "pessoas-primeiro" da roda.
+- **Incentivo à oferta (o "ovo" do galinha-e-ovo)** — a *criação* de evento pelo anfitrião entrou no
+  MVP (ticket 11); o que ainda falta é o que **motiva** alguém a criar (analytics p/ criadores,
+  destaque, IA generativa) e a curadoria/segurança reforçada de eventos de anfitrião.
 - **Métricas de sucesso e avaliação formal** da recomendação individual e da compatibilidade em
   grupo (precisão/revocação; núcleo da fase de pesquisa) — detalhado no PRD, seção 11.
 - **Expansão geográfica** além do Rio.

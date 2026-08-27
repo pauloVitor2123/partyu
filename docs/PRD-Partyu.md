@@ -2,8 +2,8 @@
 ### Product Requirements Document — Protótipo/MVP
 
 **Autor do produto:** Paulo Vitor
-**Versão:** 1.1 — 10/08/2026
-**Status:** documento-destino do processo de visão de produto (`wayfinder/`), pronto para virar issues técnicas. A v1.1 incorpora o aprofundamento pós-destino da **roda** (matchmaker perfil↔perfil) e do motor de compatibilidade.
+**Versão:** 1.2 — 11/08/2026
+**Status:** documento-destino do processo de visão de produto (`wayfinder/`), pronto para virar issues técnicas. A v1.1 incorpora o aprofundamento pós-destino da **roda** (matchmaker perfil↔perfil) e do motor de compatibilidade. A **v1.2** traz a **criação de evento pelo usuário (anfitrião)** para dentro do MVP (ticket 11, ativando o lado da oferta).
 **Fontes:** decisões consolidadas em `wayfinder/tickets/01` a `10`, pesquisa de posicionamento competitivo (`wayfinder/research/03`), pesquisa de fontes de dados de eventos (`wayfinder/research/05`), artigo científico base (`docs/Artigo_Recomendacao_Eventos.md`), user stories de design (`docs/mvp-user-stories.md`), motor de recomendação (`docs/motor-de-recomendacao.md`), glossário de domínio (`CONTEXT.md`) e ADRs (`docs/adr/`)
 
 ---
@@ -123,11 +123,13 @@ comunidade de evento e trocar ao menos uma mensagem antes do evento acontecer.
 ### 3.3 Coletivo/produtor independente — criador de evento
 
 Já publica o evento no Sympla/Instagram, mas quer alcançar público novo e engajado, não só vender
-ingresso. No MVP, essa persona é **majoritariamente passiva**: o evento chega ao Partyu por ingestão
-de fonte pública, e a comunidade/chat se forma em torno dele sem ação do criador. É a persona que
-justifica, no roadmap (seção 10), features de criação assistida por IA e analytics para criadores.
-**Gatilho:** evento sem lotação prevista, quer mais gente indo em grupo (maior taxa de comparecimento
-real do que ingresso vendido isolado).
+ingresso. No MVP, essa persona **ganha uma primeira ferramenta ativa**: qualquer usuário verificado por
+SMS pode **criar um evento** dentro do app (leve, estilo NomadTable — ticket 11), tornando-se
+**anfitrião** e admin da comunidade daquele evento. Continua valendo a ingestão de fontes públicas para
+o grande volume do catálogo; a criação própria cobre o rolê/experiência que não existe em fonte
+externa. Features mais avançadas do lado da oferta (criação assistida por IA, analytics para criadores)
+seguem no roadmap (seção 10). **Gatilho:** evento sem lotação prevista, quer mais gente indo em grupo
+(maior taxa de comparecimento real do que ingresso vendido isolado).
 
 ---
 
@@ -157,6 +159,11 @@ real do que ingresso vendido isolado).
   separado, oferecido após o onboarding, para quem topa entrar formalmente na coorte de pesquisa.
 - **Ingestão de eventos** via provedor plugável (SerpApi/Google Events como fonte primária), com
   deduplicação e normalização mínima.
+- **Criação de evento pelo usuário (anfitrião)** — formulário leve (estilo NomadTable): título,
+  data/hora, local, categoria + foto de capa e descrição opcionais (sem preço nem limite de vagas). É o
+  mesmo objeto `Evento`, com `origem: anfitrião`; entra na mesma home/detalhe/comunidade, com pin no
+  mapa sempre aproximado (bairro). Ponto de entrada: FAB "+" na home; verificação SMS just-in-time no
+  "Publicar". O criador vira **anfitrião** e admin da comunidade autocriada. Detalhe no ticket 11.
 
 ### SHOULD (muito desejáveis se houver tempo)
 
@@ -169,7 +176,9 @@ real do que ingresso vendido isolado).
 - **Roda** — matchmaker perfil↔perfil que forma subgrupos pequenos de estranhos afins a partir da
   comunidade de um evento (ciclo **comunidade → roda → grupo**); o núcleo da tese, especificado no
   ticket 10, deliberadamente fora do MVP.
-- Onboarding assistido de hosts/oferta de eventos.
+- Onboarding assistido de hosts e ferramentas avançadas de oferta (criação assistida por IA, analytics
+  para criadores) — a criação *básica* de evento já é MUST; o que fica para depois é o suporte avançado
+  ao lado da oferta.
 - Tudo listado na seção 10 (roadmap de longo prazo).
 
 **Fora de escopo do MVP, explicitamente:** monetização, moderação proativa (só reativa/denúncia),
@@ -208,6 +217,14 @@ sofrimento**: prioriza o evento que ninguém do grupo rejeita, não a média mor
 `docs/adr/0002-agregacao-grupo-menor-sofrimento.md`), fixa um evento no grupo, e o grupo coordena por
 chat até a confirmação.
 
+**5.6 Criar um evento (anfitrião).** Qualquer usuário toca no **FAB "+"** na home → abre o formulário
+leve de "Criar evento" (título, data/hora, local, categoria + foto e descrição opcionais) → toca em
+**"Publicar"**; se ainda não verificou o telefone, aparece o **portão SMS just-in-time** (só na 1ª
+vez). Publicado, o evento entra na home (misturado aos ingeridos, com selo discreto "Anfitrião", pin
+aproximado por bairro) e tem sua **comunidade autocriada**, na qual o criador é **anfitrião/admin**. A
+partir daí é o mesmo fluxo de qualquer evento: outras pessoas confirmam presença e entram na
+comunidade.
+
 ---
 
 ## 6. Modelo de Dados de Alto Nível
@@ -223,13 +240,18 @@ vetor de perfil (embedding derivado de interesses + histórico de sinais implíc
 Relaciona-se com **Interação** (1:N) e é insumo do cálculo de compatibilidade.
 
 **Evento** — título, descrição, categoria(s)/tags, local (endereço + lat/long), data/hora, link da
-fonte oficial, fonte de origem (ex. "via Google Events"), hash de deduplicação (título+data+venue),
-vetor de embedding próprio (título+descrição+tags concatenados). Relaciona-se com **Comunidade** (1:1,
-autocriada), **Interação** (1:N) e pode ser fixado em um ou mais **Grupo**.
+fonte oficial, **origem** (`ingerido | anfitrião`), fonte de origem quando ingerido (ex. "via Google
+Events") ou **anfitrião** (referência ao Usuário criador) quando `origem = anfitrião`, hash de
+deduplicação (título+data+venue), vetor de embedding próprio (título+descrição+tags concatenados).
+Relaciona-se com **Comunidade** (1:1, autocriada), **Interação** (1:N) e pode ser fixado em um ou mais
+**Grupo**. Nota de exibição: para eventos de anfitrião o local é plotado no mapa em nível **aproximado
+(bairro)**, nunca o endereço exato.
 
 **Comunidade (chat aberto de evento)** — vinculada 1:1 a um Evento; lista de membros (Usuários que
 entraram); estado da comunidade (ativa, encerrada após o evento); mensagens (ver **Mensagem**).
-Autocriada quando o primeiro usuário confirma interesse/entra no evento — não tem "dono".
+Autocriada quando o primeiro usuário confirma interesse/entra no evento. Não tem "dono" quando o evento
+é `ingerido`; quando o evento é de `anfitrião`, o **criador é admin** (modelo WhatsApp: remover
+membro, reportar).
 
 **Grupo (privado)** — criado por um Usuário (owner), lista de membros (convidados), evento(s) fixado(s),
 mensagens (mesma entidade de chat que a Comunidade, diferenciada por `tipo: aberto|privado`).
@@ -427,15 +449,16 @@ Visão de longo prazo, além do MVP — não implementar agora:
 - **Depoimentos no perfil** — relato deixado por quem teve uma experiência real com a pessoa. Dupla
   função: **prova social/confiança** (reforça a camada de segurança do ticket 07) e forte **candidato a
   métrica de sucesso da roda** — "a roda gerou experiência boa de verdade?".
-- **Criação de eventos assistida por IA generativa** — assistente conversacional que ajuda qualquer
-  pessoa (não só produtoras profissionais) a definir título, descrição, categorias, horário e local
-  sugerido de um evento próprio, reduzindo o atrito do lado da oferta.
+- **Criação de eventos assistida por IA generativa** — evolução da criação manual (que já é MUST no
+  MVP, ticket 11): um assistente conversacional que ajuda qualquer pessoa a definir título, descrição,
+  categorias, horário e local sugerido de um evento próprio, reduzindo ainda mais o atrito do lado da
+  oferta.
 - **Gamificação** — pontos por ações sociais (seguir, curtir, deixar depoimento) e por participar de
   eventos, incentivando recorrência e comparecimento real. **Bloqueada por "definir recompensa"**: o que
   os pontos valem ainda é uma questão em aberto.
 - **Analytics para criadores de eventos** — dados de alcance, engajamento e recomendações de
-  horário/descrição para produtores otimizarem seus eventos, evoluindo a persona hoje passiva
-  (seção 3.3) para uma persona ativa com ferramentas próprias.
+  horário/descrição para produtores otimizarem seus eventos, aprofundando as ferramentas do anfitrião
+  (seção 3.3) para além da criação básica já presente no MVP.
 - **Recomendação orientada a grupos como fluxo de primeira classe** — selecionar um conjunto de
   amigos e pedir diretamente "eventos para este grupo" (o cenário do bar), com agregação por **menor
   sofrimento** (ADR 0002), generalizando a adequação evento↔grupo já presente no MVP (seções 5.5 e 7.2)
