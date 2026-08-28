@@ -9,8 +9,15 @@ aproximar pessoas). Glossário e nada mais — decisões ficam nos tickets em `w
 ### Objetos sociais
 
 **Evento**:
-Acontecimento urbano (show, feira, festa) ingerido de fontes externas. É o objeto social que ancora
-tudo no produto.
+Acontecimento urbano (show, feira, festa, jantar, rolê) que ancora tudo no produto. Tem uma **origem**:
+`ingerido` (de fontes externas — SerpApi/Sympla) ou `anfitrião` (criado por um usuário no app, estilo
+NomadTable). Independente da origem é o mesmo objeto: aparece na mesma home, tem o mesmo detalhe e a
+mesma comunidade.
+
+**Anfitrião**:
+Usuário (verificado por SMS) que **cria** um evento de origem `anfitrião`. É automaticamente **admin**
+da comunidade daquele evento (modelo WhatsApp). Eventos `ingerido` não têm anfitrião.
+_Avoid_: host (use em código/UI só se necessário), organizador, criador.
 
 **Comunidade**:
 Chat **aberto** de um evento — qualquer pessoa que vá ao evento pode entrar. Uma por evento.
@@ -58,12 +65,20 @@ Estratégia de agregação para grupo↔evento: escolher o evento cuja **menor**
 mais alta ("ninguém detesta"), em vez da média.
 _Avoid_: least-misery, average.
 
-### Camada social (a especificar)
+### Camada social
 
 **Seguir / seguidor**:
-Relação de acompanhar outro perfil; a contagem aparece no detalhe do perfil. Camada social ainda a
-especificar.
+Relação de acompanhar outro perfil, **unidirecional** (tipo Instagram) — seguir não exige aprovação.
+Contagens no perfil: "seguidores", "seguindo", "conexões". Fase 3, spec `docs/specs/13-seguir-conexao.md`.
+
+**Conexão**:
+Vínculo que nasce **automaticamente** quando duas pessoas se seguem mutuamente (sem pedido/aceite). Uma
+pessoa pode ser seguidora **e** conexão ao mesmo tempo — os estados coexistem. Pré-requisito para
+deixar um depoimento. Fase 3, spec `docs/specs/13-seguir-conexao.md`.
 
 **Depoimento**:
-Relato deixado no perfil de alguém por quem teve uma **experiência real** com a pessoa. Prova social /
-confiança; candidato a métrica de pesquisa. Ainda a especificar.
+Relato em texto (sem estrelas/nota) deixado no perfil de uma **conexão** por quem teve uma **experiência
+real** com a pessoa. Publicado na hora, público a todos, sem ordenar/fixar. Autor exclui (não edita);
+dono do perfil oculta; qualquer um denuncia. Prova social/confiança e candidato a métrica de sucesso da
+roda. Fase 3, spec `docs/specs/14-depoimentos.md`.
+_Avoid_: avaliação, review, nota, estrela.
