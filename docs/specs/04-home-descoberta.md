@@ -3,7 +3,7 @@
 - **Fase:** 1 (MVP)
 - **Status:** ready-for-agent
 - **Depende de:** 02 (recomendação), 03 (ingestão) — também recebe eventos de origem `anfitrião` (spec 09)
-- **Origem:** PRD §5.2, §5.3; ticket 06; `docs/mvp-user-stories.md` (Épico 3); `docs/motor-de-recomendacao.md`.
+- **Origem:** PRD §5.2, §5.3; ticket 06; `docs/design/rodada-1-roda-e-proximos.md` (seção "03 Home"); `docs/motor-de-recomendacao.md`.
 
 ## Problem Statement
 

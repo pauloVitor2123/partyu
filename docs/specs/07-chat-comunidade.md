@@ -3,7 +3,7 @@
 - **Fase:** 1 (MVP)
 - **Status:** ready-for-agent
 - **Depende de:** 05 (Detalhe do evento), 10 (gate de verificação/diretrizes, denunciar/bloquear)
-- **Origem:** PRD §4, §5.4, §6; ticket 06; `docs/mvp-user-stories.md` (Épicos 2 e 5); `CONTEXT.md`.
+- **Origem:** PRD §4, §5.4, §6; ticket 06; `docs/design/rodada-1-roda-e-proximos.md` (seção "05 Chats"); `CONTEXT.md`.
 
 ## Problem Statement
 

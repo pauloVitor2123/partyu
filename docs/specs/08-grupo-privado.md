@@ -3,7 +3,7 @@
 - **Fase:** 1 (MVP)
 - **Status:** ready-for-agent
 - **Depende de:** 07 (primitiva de chat)
-- **Origem:** PRD §5.5; ticket 06; `docs/mvp-user-stories.md` (Épico 7); ADR 0002.
+- **Origem:** PRD §5.5; ticket 06; `docs/design/rodada-1-roda-e-proximos.md` (seção "05 Chats"); ADR 0002.
 
 ## Problem Statement
 
