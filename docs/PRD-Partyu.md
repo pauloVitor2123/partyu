@@ -4,7 +4,7 @@
 **Autor do produto:** Paulo Vitor
 **Versão:** 1.2 — 11/08/2026
 **Status:** documento-destino do processo de visão de produto (`wayfinder/`), pronto para virar issues técnicas. A v1.1 incorpora o aprofundamento pós-destino da **roda** (matchmaker perfil↔perfil) e do motor de compatibilidade. A **v1.2** traz a **criação de evento pelo usuário (anfitrião)** para dentro do MVP (ticket 11, ativando o lado da oferta).
-**Fontes:** decisões consolidadas em `wayfinder/tickets/01` a `10`, pesquisa de posicionamento competitivo (`wayfinder/research/03`), pesquisa de fontes de dados de eventos (`wayfinder/research/05`), artigo científico base (`docs/Artigo_Recomendacao_Eventos.md`), user stories de design (`docs/mvp-user-stories.md`), motor de recomendação (`docs/motor-de-recomendacao.md`), glossário de domínio (`CONTEXT.md`) e ADRs (`docs/adr/`)
+**Fontes:** decisões consolidadas em `wayfinder/tickets/01` a `11`, pesquisa de posicionamento competitivo (`wayfinder/research/03`), pesquisa de fontes de dados de eventos (`wayfinder/research/05`), artigo científico base (`docs/Artigo.pdf`), design das telas (`docs/design/`), motor de recomendação (`docs/motor-de-recomendacao.md`), glossário de domínio (`CONTEXT.md`), ADRs (`docs/adr/`) e specs de implementação (`docs/specs/`)
 
 ---
 
@@ -514,8 +514,8 @@ Este PRD sintetiza decisões tomadas via processo de grilling estruturado, regis
 `wayfinder/tickets/`: 01 (problema/proposta de valor), 02 (personas/cenários), 03 (posicionamento
 competitivo, pesquisa), 04 (modelo de dados/sinais), 05 (fontes de dados de eventos, pesquisa), 06
 (escopo/fluxos do MVP), 07 (confiança/segurança/moderação), 08 (camada de pesquisa instrumentada), 09
-(este documento de síntese) e 10 (Companhia/roda — matchmaker perfil↔perfil, pós-MVP). Ver
-`wayfinder/map.md` para o índice completo, `CONTEXT.md` para o glossário de domínio,
-`docs/motor-de-recomendacao.md` para o motor de compatibilidade, `docs/adr/` para os registros de
-decisão arquitetural e `docs/mvp-user-stories.md` para as user stories de design derivadas do escopo
-aqui definido.
+(este documento de síntese), 10 (Companhia/roda — matchmaker perfil↔perfil, pós-MVP) e 11 (criação de
+evento pelo anfitrião). Ver `wayfinder/map.md` para o índice completo, `CONTEXT.md` para o glossário de
+domínio, `docs/motor-de-recomendacao.md` para o motor de compatibilidade, `docs/adr/` para os registros
+de decisão arquitetural, `docs/design/` para as telas prototipadas via Claude Design e
+`docs/specs/00-index.md` para as specs de implementação derivadas deste escopo.

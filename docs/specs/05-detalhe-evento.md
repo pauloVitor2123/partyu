@@ -4,7 +4,7 @@
 - **Status:** ready-for-agent
 - **Depende de:** 03 (evento existe), 04 (navegação vem da Home)
 - **Origem:** PRD §5.4; ticket 06; ticket 07 (aviso de 1º encontro); ticket 11 (D3, D4, D6);
-  `docs/mvp-user-stories.md` (Épico 4).
+  `docs/design/prompt-rodada-3-criar-evento.md` (tela 4).
 
 ## Problem Statement
 

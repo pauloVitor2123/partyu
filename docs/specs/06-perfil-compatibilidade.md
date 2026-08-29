@@ -3,7 +3,7 @@
 - **Fase:** 1 (MVP)
 - **Status:** ready-for-agent
 - **Depende de:** 02 (compatibilidade pessoa↔pessoa)
-- **Origem:** PRD §5.3, §7.3; ticket 04; `docs/mvp-user-stories.md` (Épico 6); `CONTEXT.md`.
+- **Origem:** PRD §5.3, §7.3; ticket 04; `docs/design/rodada-1-roda-e-proximos.md` (seção "04 Perfil"); `CONTEXT.md`.
 
 ## Problem Statement
 
@@ -88,7 +88,7 @@ nem exibe o score cru.
 ## Further Notes
 
 - Design correspondente: seção "04 Perfil" (meu perfil, editar perfil, configurações, política de
-  privacidade) e o "ícone de compatibilidade em HTML/CSS" descrito no Épico 6 de
-  `docs/mvp-user-stories.md`.
+  privacidade) — ver `docs/design/rodada-1-roda-e-proximos.md`. O "ícone de compatibilidade em
+  HTML/CSS" é decisão de design ainda a explorar (2–3 variações), não fixada por esta spec.
 - Coerência com ticket 04: no MVP a compatibilidade pessoa↔pessoa é **sinal** de similaridade pura —
   não há matchmaker aqui (isso é a roda, spec 12, Fase 2).
