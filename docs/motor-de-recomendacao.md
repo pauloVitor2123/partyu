@@ -19,7 +19,7 @@ O mesmo núcleo serve a três perguntas diferentes:
 
 | # | Operação | Pergunta que responde | Onde vive |
 |---|---|---|---|
-| 1 | **Pessoa ↔ evento** | "que evento combina comigo?" | recomendação individual — *já existe* |
+| 1 | **Pessoa ↔ evento** | "que evento combina comigo?" | recomendação individual |
 | 2 | **Pessoa ↔ pessoa** | "quanto duas pessoas combinam?" | sinal de afinidade + matchmaker da roda |
 | 3 | **Grupo ↔ evento** | "que evento agrada o grupo todo?" | grupo privado (frente 1) |
 
@@ -80,7 +80,7 @@ de "ninguém compatível". Serve de telemetria de saúde do motor.
 
 | Funcionalidade | Operação | Status |
 |---|---|---|
-| Home (mapa/lista) | pessoa↔evento | MVP — já existe |
+| Home (mapa/lista) | pessoa↔evento | MVP |
 | "Eventos diferentes" | alavanca de novidade | novo — a posicionar |
 | Perfil / detalhe do usuário | pessoa↔pessoa (sinal) | MVP |
 | Comunidade do evento (faixa agregada) | pessoa↔pessoa (agregado) | MVP |

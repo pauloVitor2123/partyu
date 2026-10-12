@@ -2,8 +2,8 @@
 ### Product Requirements Document — Protótipo/MVP
 
 **Autor do produto:** Paulo Vitor
-**Versão:** 1.2 — 11/08/2026
-**Status:** documento-destino do processo de visão de produto (`wayfinder/`), pronto para virar issues técnicas. A v1.1 incorpora o aprofundamento pós-destino da **roda** (matchmaker perfil↔perfil) e do motor de compatibilidade. A **v1.2** traz a **criação de evento pelo usuário (anfitrião)** para dentro do MVP (ticket 11, ativando o lado da oferta).
+**Versão:** 1.3 — 12/10/2026
+**Status:** documento-destino do processo de visão de produto (`wayfinder/`), pronto para virar issues técnicas. A v1.1 incorpora o aprofundamento pós-destino da **roda** (matchmaker perfil↔perfil) e do motor de compatibilidade. A **v1.2** traz a **criação de evento pelo usuário (anfitrião)** para dentro do MVP (ticket 11, ativando o lado da oferta). A **v1.3** registra que a implementação é **greenfield** (nada do piloto do TCC é reaproveitado como código) e adiciona a **landing page de validação** como Fase 0 (`docs/specs/15-landing-page.md`).
 **Fontes:** decisões consolidadas em `wayfinder/tickets/01` a `11`, pesquisa de posicionamento competitivo (`wayfinder/research/03`), pesquisa de fontes de dados de eventos (`wayfinder/research/05`), artigo científico base (`docs/Artigo.pdf`), design das telas (`docs/design/`), motor de recomendação (`docs/motor-de-recomendacao.md`), glossário de domínio (`CONTEXT.md`), ADRs (`docs/adr/`) e specs de implementação (`docs/specs/`)
 
 ---
@@ -72,8 +72,8 @@ denúncia/bloqueio).
 
 Validar, como desenvolvedor/pesquisador: (i) a viabilidade de ingerir eventos reais de uma fonte
 externa (Google Events via SerpApi) com qualidade suficiente para sustentar comunidades ativas; (ii)
-a extensão do módulo de recomendação de similaridade perfil↔evento (já existente, embeddings
-`text-embedding-ada-002` + cosseno) para produzir um sinal de compatibilidade perfil↔perfil e
+a construção do módulo de recomendação de similaridade perfil↔evento (embeddings + cosseno, a
+abordagem validada no piloto acadêmico) e sua extensão para produzir um sinal de compatibilidade perfil↔perfil e
 perfil↔grupo, sem ainda formar grupos automaticamente (isso fica para a fase da **roda** — o
 matchmaker perfil↔perfil especificado no ticket 10, pós-MVP); (iii) a operação de uma camada de confiança/segurança proporcional a um
 piloto pequeno (regras automáticas + revisão manual); (iv) a instrumentação de telemetria suficiente
@@ -282,10 +282,15 @@ aceito.
 
 ## 7. Módulo de Recomendação
 
-### 7.1 Base técnica já existente (não é decisão em aberto)
+### 7.1 Base técnica (abordagem do piloto, reconstruída do zero)
 
-O título, a descrição e as categorias/tags de cada evento são concatenados e submetidos ao modelo
-`text-embedding-ada-002` (OpenAI), gerando um vetor de comprimento fixo. O mesmo processo gera o
+> A abordagem abaixo foi a usada no piloto acadêmico (artigo base), mas **não há código reaproveitado**:
+> o MVP é greenfield. O modelo de embedding concreto é decisão da Spec 00 (fundação) — o
+> `text-embedding-ada-002` usado no piloto é legado desde 2024 (substituído pela família
+> `text-embedding-3`).
+
+O título, a descrição e as categorias/tags de cada evento são concatenados e submetidos a um modelo
+de embedding de texto, gerando um vetor de comprimento fixo. O mesmo processo gera o
 **vetor de perfil do usuário**, composto a partir de: (i) interesses explícitos do onboarding
 (categorias/subcategorias) e (ii) histórico de interações implícitas — eventos visualizados,
 favoritados, confirmados e avaliados (cada tipo de sinal com peso distinto na composição, maior peso
@@ -294,7 +299,7 @@ para presença confirmada/avaliação do que para visualização). A relevância
 
 ### 7.2 Extensão para perfil↔perfil e perfil↔grupo (o objeto de pesquisa)
 
-A mesma métrica de cosseno, já validada para perfil↔evento, é estendida para comparar vetores de
+A mesma métrica de cosseno, usada no piloto para perfil↔evento, é estendida para comparar vetores de
 **dois ou mais perfis de usuário** entre si. Decisão de escopo de produto (ticket 04): esse sinal é
 **similaridade pura** (interesses + comportamento) — sem fator de diversidade explícito no MVP;
 "compatível mas diverso" não é otimizado ativamente na v1, fica registrado como direção de pesquisa
@@ -359,7 +364,7 @@ mas não é contrato de API voltado à UI além do necessário para ordenar a li
 O cosseno é o **núcleo único** do produto — a mesma matemática serve a três operações e uma alavanca
 transversal (detalhe em `docs/motor-de-recomendacao.md`):
 
-1. **Pessoa ↔ evento** — recomendação individual (MVP, já existe).
+1. **Pessoa ↔ evento** — recomendação individual (MVP).
 2. **Pessoa ↔ pessoa** — no MVP aparece como **sinal** de similaridade pura (seção 7.2); no pós-MVP vira
    o **matchmaker da roda**, onde entra o "diverso mas compatível" (piso de afinidade no que importa +
    variedade no resto, recíproco).
@@ -389,7 +394,8 @@ sugere ninguém e emite alerta (comunidade vazia / dados quebrados).
   parceria; guarda apenas metadados factuais (título, data, local, categoria, link) e sempre linka de
   volta à fonte oficial — nunca redistribui descrição rica ou imagens protegidas de terceiros.
 - **Landing page (Next.js)** — divulgação do produto e da pesquisa, captura de interesse (waitlist),
-  fora do app em si.
+  fora do app em si. É a **Fase 0**, construída antes do app para validar a ideia — ver
+  `docs/specs/15-landing-page.md`.
 
 **Fluxo típico de requisição:** App React Native → Backend (Supabase) autentica e roteia →
 para descoberta de eventos, Backend consulta cache local de eventos ingeridos (atualizados

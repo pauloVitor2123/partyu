@@ -91,8 +91,7 @@ confirma que a comunidade daquele evento já existe.
 
 ## Further Notes
 
-- Design correspondente: seção "04 Perfil"... não — seção do **Detalhe do evento** (reaproveitada nas
-  seções 03–05 e explicitamente na seção "08 · Criar evento", tela 4, para o caso `anfitrião`) — ver
+- Design correspondente: tela de **Detalhe do evento** (reaproveitada nas seções 03–05 e explicitamente na seção "08 · Criar evento", tela 4, para o caso `anfitrião`) — ver
   `docs/design/prompt-rodada-3-criar-evento.md`.
 - Reuso reconhecido: esta é a **mesma tela** para as duas origens (ticket 11, D1) — não criar telas
   paralelas.

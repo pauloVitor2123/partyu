@@ -13,12 +13,16 @@ Duas frentes de produto (ambas no MVP):
 O Partyu é também uma **plataforma de pesquisa acadêmica** sobre sistemas de recomendação sociais e
 compatibilidade em grupos, com coleta instrumentada e opt-in dedicado de coorte.
 
-## Base técnica (estágio piloto)
+## Base técnica prevista (greenfield)
 
+Nada do piloto acadêmico é reaproveitado como código; a stack abaixo é a prevista e será travada na
+Spec 00 (fundação).
+
+- **Landing page** de validação em **Next.js** (Fase 0, antes do app)
 - App móvel multiplataforma em **React Native**
 - Backend como serviço em **Supabase** (PostgreSQL)
-- Serviço **Python** de geração/comparação de embeddings (`text-embedding-ada-002`) via API REST
-- Recomendação por **similaridade de cosseno** (perfil↔evento; em evolução para perfil↔perfil)
+- Serviço **Python** de geração/comparação de embeddings via API REST (modelo a definir na Spec 00)
+- Recomendação por **similaridade de cosseno** (perfil↔evento, perfil↔perfil, grupo↔evento)
 
 ## Estrutura do repositório
 
@@ -29,6 +33,8 @@ compatibilidade em grupos, com coleta instrumentada e opt-in dedicado de coorte.
   (as três operações do cosseno, alavanca de novidade, menor sofrimento).
 - `docs/adr/` — Architecture Decision Records (trade-offs conscientes registrados).
 - `docs/design/` — prompts de design (Claude Design) e o handoff de estado da prototipagem de UI.
+- `docs/roadmap-marcos.md` — ordem de execução em **marcos testáveis** (M0–M6), cada um com roteiro de
+  teste manual.
 - `docs/specs/` — **specs de implementação**, derivadas do PRD/tickets/design, uma por fatia
   buildável e testável isoladamente. Comece por `docs/specs/00-index.md`.
 - `docs/Artigo.pdf` — artigo científico base do projeto (TCC/pesquisa acadêmica).
@@ -40,7 +46,9 @@ compatibilidade em grupos, com coleta instrumentada e opt-in dedicado de coorte.
 ## Status
 
 **Planejamento de produto encerrado, implementação ainda não iniciada (greenfield).** O destino do
-mapa Wayfinder foi alcançado (`wayfinder/map.md`) e as 14 specs de `docs/specs/` estão todas
-`ready-for-agent`. Não há código de app/backend neste repositório ainda — o próximo passo é começar
-a implementação a partir de `docs/specs/01-auth-onboarding.md` (sem dependências) ou aplicar os
-prompts de design pendentes em `docs/design/`.
+mapa Wayfinder foi alcançado (`wayfinder/map.md`) e as specs de `docs/specs/` estão escritas. A
+execução segue os marcos testáveis de [`docs/roadmap-marcos.md`](docs/roadmap-marcos.md):
+
+1. **M0 — Landing page de validação** (`docs/specs/15-landing-page.md`): próximo passo.
+2. **Rodada de decisões → Spec 00 (fundação)**: stack, ambientes, requisitos das lojas.
+3. **M1–M6 — App**, cada marco com roteiro de teste manual.

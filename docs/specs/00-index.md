@@ -6,9 +6,11 @@ Specs de implementação derivadas do PRD (`docs/PRD-Partyu.md`), dos tickets de
 template do `/to-spec` (Problem → Solution → User Stories → Implementation Decisions →
 Testing Decisions → Out of Scope → Further Notes) e marcada `ready-for-agent`.
 
-> **Estado:** ainda não há código — greenfield. As specs definem contratos e comportamento
-> externo (nos seams), não caminhos de arquivo nem trechos de código. Todas as 14 specs (Fases
-> 1–3) estão escritas e `ready-for-agent`; a ordem de implementação segue a coluna "Depende de".
+> **Estado:** ainda não há código — greenfield (nada do piloto acadêmico é reaproveitado). As specs
+> definem contratos e comportamento externo (nos seams), não caminhos de arquivo nem trechos de
+> código. A **ordem de execução e o teste manual de cada etapa** estão em
+> [`docs/roadmap-marcos.md`](../roadmap-marcos.md) (marcos M0–M6). A **Spec 00 (fundação: stack,
+> ambientes, ADRs)** ainda precisa ser escrita antes do M1 — ver a "Rodada de decisões" no roadmap.
 
 ## Seams (fronteiras de teste) — greenfield
 
@@ -20,6 +22,13 @@ Testing Decisions → Out of Scope → Further Notes) e marcada `ready-for-agent
    Sympla plano B); trocável sem reescrever consumidores.
 4. **Primitiva de chat** — módulo único reusado em 3 modos (comunidade aberta, grupo
    privado, roda); os consumidores diferenciam por `tipo/contexto`, não por primitiva nova.
+
+## Fase 0 — Validação (antes do app)
+
+| #  | Spec | Depende de | Status |
+|----|------|-----------|--------|
+| 15 | [Landing page de validação (SEO + métricas + waitlist)](15-landing-page.md) | — | ready-for-agent |
+| 00 | Fundação (stack, ambientes, ADRs) — **a escrever** | — | pendente |
 
 ## Fase 1 — MVP (MUST)
 
