@@ -11,7 +11,9 @@ Um perfil precisa representar uma pessoa (interesses, verificação) e comunicar
 comigo** sem virar um app de namoro nem convidar comparação/ranking social — e ainda dar acesso às
 ações mínimas de confiança (denunciar/bloquear) sempre que duas pessoas se encontram no produto.
 
-## Solution** — "Meu perfil"** editável (interesses, fotos, configurações) e **"Perfil de outra
+## Solution
+
+Duas visões de perfil: **"Meu perfil"** editável (interesses, fotos, configurações) e **"Perfil de outra
 pessoa"** somente-leitura com selo de verificado, **ícone de força de compatibilidade** (3 níveis,
 qualitativo) e interesses em comum em texto, mais denunciar/bloquear. Toda leitura de compatibilidade
 pessoa↔pessoa passa pelo contrato `GET /api/compatibility/user-to-user` (spec 02) — a UI nunca recebe

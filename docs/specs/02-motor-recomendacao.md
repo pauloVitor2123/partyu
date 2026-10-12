@@ -104,8 +104,8 @@ No MVP o sinal pessoa↔pessoa é **similaridade pura** (sem diversidade explíc
 
 - Matchmaker da roda ("diverso mas compatível", recíproco, piso de sanidade **ativo**) —
   spec 12.
-- Treino/afinação do modelo de embedding e escolha de modelo (dado de arquitetura; a base
-  `text-embedding-ada-002` já existe conceitualmente — ver `map.md`).
+- Treino/afinação do modelo de embedding. A **escolha** do modelo é decisão da Spec 00 (fundação):
+  o piloto usou `text-embedding-ada-002`, hoje legado; não há código do piloto reaproveitado.
 - Métricas formais de precisão/revocação da coorte (spec 11 define a captura; a análise é
   pesquisa).
 
