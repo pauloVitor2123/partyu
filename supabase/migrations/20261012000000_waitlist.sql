@@ -30,3 +30,7 @@ select
 from public.waitlist
 group by 1, 2, 3, 4
 order by 1 desc, 5 desc;
+
+-- Sem acesso para chaves públicas: só o servidor (service_role/secret key) lê e grava.
+revoke all on public.waitlist from anon, authenticated;
+revoke all on public.waitlist_resumo from anon, authenticated;
