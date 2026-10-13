@@ -15,7 +15,7 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Partyu: eventos no Rio com a galera certa",
+    default: "Partyu: o rolê certo, com a galera certa",
     template: "%s | Partyu",
   },
   description: SITE_DESCRIPTION,
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "pt_BR",
     siteName: SITE_NAME,
-    title: "Partyu: eventos no Rio com a galera certa",
+    title: "Partyu: o rolê certo, com a galera certa",
     description: SITE_DESCRIPTION,
     url: "/",
   },

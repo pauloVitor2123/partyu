@@ -47,10 +47,10 @@ export function Article({ meta, intro, children }: { meta: ArticleMeta; intro: s
         <div className="artigo-corpo">{children}</div>
 
         <aside className="artigo-cta" id="lista">
-          <p className="artigo-cta-titulo">O Partyu está chegando ao Rio</p>
+          <p className="artigo-cta-titulo">O Partyu está chegando</p>
           <p>
             Um app que mostra eventos reais perto de você e te ajuda a ir junto: com seus amigos ou com gente que
-            curte o mesmo que você. Entre na lista e seja chamado para a versão de testes.
+            curte o mesmo que você, começando pelos eventos do Rio. Entre na lista e seja chamado para a versão de testes.
           </p>
           <WaitlistForm titulo={false} />
         </aside>

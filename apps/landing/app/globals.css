@@ -149,17 +149,22 @@ input:focus-visible {
   height: 60px;
 }
 
-.logo {
-  font-weight: 700;
-  font-size: 1.5rem;
-  color: var(--texto);
+.logo-link {
   text-decoration: none;
-  letter-spacing: -0.03em;
-  margin: 0;
 }
 
-.logo-ponto {
-  color: var(--rosa);
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 1.45rem;
+  color: var(--texto);
+  letter-spacing: -0.03em;
+}
+
+.logo svg {
+  flex-shrink: 0;
 }
 
 /* Hero */
@@ -207,66 +212,256 @@ input:focus-visible {
   margin-top: 16px;
 }
 
-/* Ilustração do celular */
-.celular {
+/* Celular (ilustração da tela do app) */
+.phone {
+  --tela: #fbf8f7;
+  position: relative;
   justify-self: center;
-  width: 260px;
+  width: 290px;
   max-width: 100%;
-  background: var(--texto);
-  border-radius: 36px;
-  padding: 12px;
-  box-shadow: var(--sombra);
+  aspect-ratio: 290 / 600;
+  background: #17131a;
+  border-radius: 48px;
+  padding: 11px;
+  box-shadow:
+    0 0 0 2px #3a3340,
+    0 30px 60px -20px rgba(255, 77, 128, 0.35),
+    0 18px 36px -18px rgba(31, 26, 28, 0.45);
 }
 
-.celular-tela {
-  background: var(--fundo);
-  border-radius: 26px;
-  padding: 18px 14px;
+.phone-botao {
+  position: absolute;
+  width: 3px;
+  background: #3a3340;
+  border-radius: 2px;
+}
+
+.phone-botao-1 {
+  left: -4px;
+  top: 120px;
+  height: 56px;
+}
+
+.phone-botao-2 {
+  right: -4px;
+  top: 150px;
+  height: 80px;
+}
+
+.phone-tela {
+  position: relative;
+  height: 100%;
+  background: var(--tela);
+  border-radius: 38px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+.phone-status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 22px 6px;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.phone-ilha {
+  width: 84px;
+  height: 24px;
+  background: #17131a;
+  border-radius: 999px;
+}
+
+.phone-status-icones {
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.app-topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 14px 6px;
+}
+
+.app-local {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.app-local span {
   display: grid;
-  gap: 10px;
 }
 
-.celular-titulo {
-  font-weight: 700;
-  font-size: 0.95rem;
-  margin: 0 0 4px;
+.app-local small {
+  color: var(--texto-suave);
+  font-size: 9.5px;
 }
 
-.card-evento {
-  background: var(--superficie);
-  border-radius: 14px;
-  padding: 12px;
-  font-size: 0.8rem;
-  line-height: 1.4;
+.app-local strong {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 12px;
 }
 
-.card-evento strong {
-  display: block;
-  font-size: 0.9rem;
+.app-toggle {
+  display: flex;
+  background: #efe8e5;
+  border-radius: 999px;
+  padding: 3px;
 }
 
-.card-evento .meta {
+.app-toggle span {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 22px;
+  border-radius: 999px;
   color: var(--texto-suave);
 }
 
-.selo-afinidade {
+.app-toggle .ativo {
+  background: #fff;
+  color: var(--rosa);
+  box-shadow: 0 1px 3px rgba(31, 26, 28, 0.15);
+}
+
+.app-chips {
+  display: flex;
+  gap: 6px;
+  padding: 6px 14px 10px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.app-chips span {
+  border: 1px solid var(--borda);
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-weight: 500;
+  background: #fff;
+}
+
+.app-chips .ativo {
+  background: var(--texto);
+  border-color: var(--texto);
+  color: #fff;
+}
+
+.app-secao {
+  margin: 0;
+  padding: 0 14px 6px;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.app-lista {
+  flex: 1;
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  padding: 0 12px;
+}
+
+.app-card {
+  display: flex;
+  gap: 10px;
+  background: #fff;
+  border-radius: 16px;
+  padding: 8px;
+  box-shadow: 0 2px 8px rgba(31, 26, 28, 0.06);
+}
+
+.app-card-capa {
+  flex-shrink: 0;
+  width: 58px;
+  height: 58px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+}
+
+.app-card-info {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.app-card-info strong {
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.app-card-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  color: var(--texto-suave);
+  font-size: 10px;
+}
+
+.app-card-meta svg:last-of-type {
+  margin-left: 4px;
+}
+
+.app-card-social {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  margin-top: 6px;
   color: var(--rosa-escuro);
   font-weight: 600;
+  font-size: 10px;
 }
 
-.anel {
-  width: 14px;
-  height: 14px;
+.app-avatares {
+  display: inline-flex;
+}
+
+.app-avatares span {
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
-  border: 3px solid var(--rosa);
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 1.5px var(--rosa);
+  margin-left: -5px;
 }
 
-.anel-medio {
-  border-right-color: var(--rosa-claro);
+.app-avatares span:first-child {
+  margin-left: 0;
+}
+
+.app-abas {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 8px 10px 18px;
+  background: #fff;
+  border-top: 1px solid #efe8e5;
+  color: #a39a9e;
+}
+
+.app-abas .ativo {
+  color: var(--rosa);
+}
+
+.app-fab {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 14px;
+  background: var(--rosa);
+  color: #fff;
+  box-shadow: 0 6px 14px -4px rgba(255, 77, 128, 0.6);
 }
 
 /* Seções */
@@ -301,7 +496,7 @@ input:focus-visible {
   border-color: transparent;
 }
 
-.cartao-destaque {
+.cartao.cartao-destaque {
   background: var(--texto);
   color: #fff;
   border-color: var(--texto);
@@ -312,9 +507,19 @@ input:focus-visible {
 }
 
 .cartao-icone {
-  font-size: 1.8rem;
-  margin-bottom: 8px;
-  display: block;
+  display: inline-grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: var(--rosa-claro);
+  color: var(--rosa-escuro);
+  margin-bottom: 14px;
+}
+
+.cartao-destaque .cartao-icone {
+  background: var(--rosa);
+  color: #fff;
 }
 
 .cartao p:last-child {
@@ -435,12 +640,47 @@ input:focus-visible {
   cursor: pointer;
 }
 
+.opcao {
+  position: relative;
+  align-items: center;
+}
+
 .opcao:has(input:checked) {
   border-color: var(--rosa);
   background: var(--rosa-claro);
 }
 
-.opcao input,
+/* Checkbox nativo escondido visualmente, mas acessível; a caixa desenhada fica no lugar. */
+.opcao input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+
+.opcao-caixa {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--borda);
+  border-radius: 6px;
+  display: grid;
+  place-items: center;
+  color: transparent;
+  background: #fff;
+}
+
+.opcao input:checked + .opcao-caixa {
+  background: var(--rosa);
+  border-color: var(--rosa);
+  color: #fff;
+}
+
+.opcao:has(input:focus-visible) {
+  outline: 3px solid var(--texto);
+  outline-offset: 2px;
+}
+
 .consentimento input {
   accent-color: var(--rosa);
   margin-top: 5px;

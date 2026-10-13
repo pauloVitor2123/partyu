@@ -5,7 +5,7 @@ import { CONTACT_EMAIL } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Sobre o Partyu e a pesquisa",
   description:
-    "O Partyu é um app de eventos com foco social nascido de uma pesquisa acadêmica sobre recomendação de eventos e compatibilidade em grupos, no Rio de Janeiro.",
+    "O Partyu é um app de eventos com foco social nascido de uma pesquisa acadêmica sobre recomendação de eventos e compatibilidade em grupos.",
   alternates: { canonical: "/sobre" },
 };
 
@@ -59,8 +59,8 @@ export default function Sobre() {
 
           <h2>Onde estamos</h2>
           <p>
-            O app está em construção e vai começar pelo Rio de Janeiro, com uma versão de testes para um grupo pequeno
-            da lista de espera. <Link href="/#lista">Entre na lista</Link> para ser chamado.
+            O app está em construção e vai funcionar em todo o Brasil, começando com eventos do Rio de Janeiro. A
+            primeira versão de testes será para um grupo pequeno da lista de espera. <Link href="/#lista">Entre na lista</Link> para ser chamado.
           </p>
 
           <h2>Contato</h2>

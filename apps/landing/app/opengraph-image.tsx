@@ -1,6 +1,7 @@
 import { ImageResponse } from "next/og";
+import { PIN_PATH, SMILE_PATH } from "@/components/Logo";
 
-export const alt = "Partyu: eventos no Rio com a galera certa";
+export const alt = "Partyu: o rolê certo, com a galera certa";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -18,8 +19,13 @@ export default function OpengraphImage() {
         fontFamily: "sans-serif",
       }}
     >
-      <div style={{ display: "flex", fontSize: 56, fontWeight: 700, color: "#1F1A1C" }}>
-        partyu<span style={{ color: "#FF4D80" }}>.</span>
+      <div style={{ display: "flex", alignItems: "center", gap: 20, fontSize: 56, fontWeight: 700, color: "#1F1A1C" }}>
+        <svg width="72" height="72" viewBox="0 0 1024 1024">
+          <rect width="1024" height="1024" rx="230" fill="#FF4D80" />
+          <path d={PIN_PATH} fill="#fff" />
+          <path d={SMILE_PATH} fill="#FF4D80" />
+        </svg>
+        partyu
       </div>
       <div style={{ display: "flex", flexDirection: "column" }}>
         <div style={{ display: "flex", fontSize: 76, fontWeight: 700, color: "#1F1A1C", lineHeight: 1.1 }}>
@@ -29,7 +35,7 @@ export default function OpengraphImage() {
           já com a galera certa.
         </div>
         <div style={{ display: "flex", fontSize: 32, color: "#5C5357", marginTop: 28 }}>
-          Eventos reais do Rio · com seus amigos ou com gente compatível
+          Eventos reais · com seus amigos ou com gente compatível
         </div>
       </div>
       <div

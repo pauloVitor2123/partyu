@@ -1,6 +1,7 @@
 "use client";
 
 import { track } from "@vercel/analytics";
+import { Check } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useId, useState } from "react";
 
@@ -47,6 +48,10 @@ export function WaitlistForm({ titulo = true }: { titulo?: boolean }) {
   async function enviar(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = new FormData(event.currentTarget);
+    if (form.getAll("interesses").length === 0) {
+      setEstado({ tipo: "erro", mensagem: "Marque pelo menos uma opção do que você quer do Partyu." });
+      return;
+    }
     setEstado({ tipo: "enviando" });
     try {
       const res = await fetch("/api/waitlist", {
@@ -54,7 +59,7 @@ export function WaitlistForm({ titulo = true }: { titulo?: boolean }) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           email: form.get("email"),
-          interesse: form.get("interesse"),
+          interesses: form.getAll("interesses"),
           bairro: form.get("bairro"),
           consent: form.get("consent") === "on",
           empresa: form.get("empresa"),
@@ -67,7 +72,7 @@ export function WaitlistForm({ titulo = true }: { titulo?: boolean }) {
         setEstado({ tipo: "erro", mensagem: data.error ?? "Algo deu errado. Tente de novo." });
         return;
       }
-      track("waitlist_signup", { interesse: String(form.get("interesse")) });
+      track("waitlist_signup", { interesses: form.getAll("interesses").join(",") });
       setEstado({ tipo: "ok" });
     } catch {
       setEstado({ tipo: "erro", mensagem: "Sem conexão. Confira sua internet e tente de novo." });
@@ -93,10 +98,15 @@ export function WaitlistForm({ titulo = true }: { titulo?: boolean }) {
       </label>
 
       <fieldset className="campo">
-        <legend>O que você mais quer do Partyu?</legend>
-        {OPCOES.map((op, i) => (
+        <legend>
+          O que você mais quer do Partyu? <small>(marque quantas quiser)</small>
+        </legend>
+        {OPCOES.map((op) => (
           <label key={op.value} className="opcao">
-            <input type="radio" name="interesse" value={op.value} required defaultChecked={i === 0} />
+            <input type="checkbox" name="interesses" value={op.value} />
+            <span className="opcao-caixa" aria-hidden="true">
+              <Check size={14} strokeWidth={3} />
+            </span>
             <span>{op.label}</span>
           </label>
         ))}

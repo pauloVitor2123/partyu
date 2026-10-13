@@ -4,11 +4,11 @@ export const INTERESSES = ["organizar_grupo", "achar_companhia", "criar_evento"]
 export type Interesse = (typeof INTERESSES)[number];
 
 // Versão do texto de consentimento exibido no formulário. Mude ao alterar o texto.
-export const CONSENT_VERSION = "2026-10-12";
+export const CONSENT_VERSION = "2026-10-13";
 
 export type WaitlistEntry = {
   email: string;
-  interesse: Interesse;
+  interesses: Interesse[];
   bairro: string | null;
   pagina: string | null;
   utm_source: string | null;
@@ -41,9 +41,12 @@ export function parseWaitlist(body: unknown): ParseResult {
   const email = text(b.email, 254)?.toLowerCase();
   if (!email || !EMAIL_RE.test(email)) return { ok: false, error: "Informe um e-mail válido." };
 
-  if (!INTERESSES.includes(b.interesse as Interesse)) {
-    return { ok: false, error: "Escolha o que você mais quer do Partyu." };
+  const brutos = Array.isArray(b.interesses) ? b.interesses : [];
+  if (brutos.length === 0 || !brutos.every((i) => INTERESSES.includes(i as Interesse))) {
+    return { ok: false, error: "Escolha pelo menos uma opção do que você quer do Partyu." };
   }
+  // Remove repetidos e mantém a ordem canônica.
+  const interesses = INTERESSES.filter((i) => brutos.includes(i));
 
   if (b.consent !== true) return { ok: false, error: "É preciso aceitar a Política de Privacidade." };
 
@@ -51,7 +54,7 @@ export function parseWaitlist(body: unknown): ParseResult {
     ok: true,
     entry: {
       email,
-      interesse: b.interesse as Interesse,
+      interesses,
       bairro: text(b.bairro, 80),
       pagina: text(b.pagina, 200),
       utm_source: text(b.utm_source, 100),

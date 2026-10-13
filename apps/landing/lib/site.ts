@@ -16,7 +16,7 @@ export const ALLOW_INDEXING = process.env.NEXT_PUBLIC_ALLOW_INDEXING === "true";
 export const CONTACT_EMAIL = process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "contato@partyu.com.br";
 
 export const SITE_DESCRIPTION =
-  "O Partyu mostra eventos reais do Rio de Janeiro e te ajuda a ir junto: com seus amigos ou com gente que curte o mesmo que você. Entre na lista de espera.";
+  "O Partyu mostra eventos reais perto de você e te ajuda a ir junto: com seus amigos ou com gente que curte o mesmo que você. Começando pelo Rio de Janeiro. Entre na lista de espera.";
 
 export type PageEntry = { path: string; title: string; priority: number };
 

@@ -1,5 +1,7 @@
+import { BadgeCheck, Flag, Handshake, MapPin, ShieldCheck, Users } from "lucide-react";
 import Link from "next/link";
 import { JsonLd } from "@/components/Chrome";
+import { PhoneMockup } from "@/components/PhoneMockup";
 import { WaitlistForm } from "@/components/WaitlistForm";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
 
@@ -14,15 +16,15 @@ const FAQ = [
   },
   {
     q: "Funciona fora do Rio?",
-    a: "No começo, não: o Partyu começa pelo Rio de Janeiro para que os eventos e as comunidades tenham gente de verdade. Outras cidades vêm depois.",
+    a: "Sim, o app vai funcionar em todo o Brasil. No começo, os eventos vêm de plataformas de eventos do Rio de Janeiro, então é lá que você vai encontrar mais opções. Outras cidades entram em seguida.",
   },
   {
     q: "É um app de namoro?",
-    a: "Não. O Partyu é sobre sair de casa e viver experiências: ir a eventos com seus amigos ou com pessoas que curtem as mesmas coisas que você. Não existe nota ou ranking de pessoas; a afinidade aparece só como baixa, média ou alta, junto dos interesses em comum.",
+    a: "Não. O Partyu é sobre sair de casa e viver experiências: ir a eventos com seus amigos ou com pessoas que curtem as mesmas coisas que você.",
   },
   {
     q: "De onde vêm os eventos?",
-    a: "De fontes públicas de eventos do Rio, sempre com link para a página oficial, e de pessoas que criam seus próprios rolês dentro do app.",
+    a: "De plataformas de eventos, começando pelo Rio de Janeiro, sempre com link para a página oficial, e de pessoas que criam seus próprios rolês dentro do app.",
   },
   {
     q: "E a segurança para conhecer gente nova?",
@@ -46,7 +48,7 @@ export default function Home() {
             url: SITE_URL,
             logo: `${SITE_URL}/icon.svg`,
             description: SITE_DESCRIPTION,
-            areaServed: { "@type": "City", name: "Rio de Janeiro" },
+            areaServed: { "@type": "Country", name: "Brasil" },
           },
           {
             "@context": "https://schema.org",
@@ -70,7 +72,7 @@ export default function Home() {
       <section className="hero">
         <div className="container hero-grid">
           <div>
-            <span className="etiqueta">Em breve no Rio de Janeiro</span>
+            <span className="etiqueta">Em breve · começando pelo Rio de Janeiro</span>
             <h1>
               O rolê certo, <span className="destaque">já com a galera certa.</span>
             </h1>
@@ -89,32 +91,7 @@ export default function Home() {
             <p className="hero-nota">App em construção · lista de espera aberta · gratuito na versão de testes</p>
           </div>
 
-          <div className="celular" aria-hidden="true">
-            <div className="celular-tela">
-              <p className="celular-titulo">Perto de você · sábado</p>
-              <div className="card-evento">
-                <strong>Feira gastronômica</strong>
-                <span className="meta">Centro · 16h</span>
-                <span className="selo-afinidade">
-                  <span className="anel" /> 4 pessoas com alta afinidade
-                </span>
-              </div>
-              <div className="card-evento">
-                <strong>Roda de samba</strong>
-                <span className="meta">Laranjeiras · 18h</span>
-                <span className="selo-afinidade">
-                  <span className="anel anel-medio" /> seu grupo topa
-                </span>
-              </div>
-              <div className="card-evento">
-                <strong>Exposição + happy hour</strong>
-                <span className="meta">Botafogo · 19h</span>
-                <span className="selo-afinidade">
-                  <span className="anel anel-medio" /> comunidade aberta
-                </span>
-              </div>
-            </div>
-          </div>
+          <PhoneMockup />
         </div>
       </section>
 
@@ -128,7 +105,7 @@ export default function Home() {
           <div className="grade grade-3">
             <article className="cartao">
               <span className="cartao-icone" aria-hidden="true">
-                👯
+                <Users size={24} />
               </span>
               <h3>Tem grupo? A gente organiza.</h3>
               <p>
@@ -138,7 +115,7 @@ export default function Home() {
             </article>
             <article className="cartao cartao-destaque">
               <span className="cartao-icone" aria-hidden="true">
-                🤝
+                <Handshake size={24} />
               </span>
               <h3>Não tem com quem ir? Tem quem vá.</h3>
               <p>
@@ -148,11 +125,11 @@ export default function Home() {
             </article>
             <article className="cartao">
               <span className="cartao-icone" aria-hidden="true">
-                📍
+                <MapPin size={24} />
               </span>
               <h3>Quer puxar um rolê? Crie o seu.</h3>
               <p>
-                Um jantar, uma trilha, um sarau: publique seu próprio evento em poucos campos. No mapa aparece só o
+                Um jantar, uma trilha, um sarau: publique seu próprio evento em poucos segundos. No mapa aparece só o
                 bairro, nunca o endereço exato.
               </p>
             </article>
@@ -186,21 +163,26 @@ export default function Home() {
 
       <section className="secao secao-clara" aria-labelledby="seguranca">
         <div className="container">
-          <h2 id="seguranca">Conhecer gente nova, com cuidado</h2>
-          <div className="grade grade-2">
+          <h2 id="seguranca">Segurança em primeiro lugar</h2>
+          <div className="grade grade-3">
             <div className="cartao">
+              <span className="cartao-icone" aria-hidden="true">
+                <BadgeCheck size={24} />
+              </span>
               <h3>Verificação por SMS</h3>
               <p>Só conversa com estranhos quem verificou o telefone. Perfis verificados ganham um selo.</p>
             </div>
             <div className="cartao">
+              <span className="cartao-icone" aria-hidden="true">
+                <Flag size={24} />
+              </span>
               <h3>Denunciar e bloquear</h3>
               <p>Em qualquer conversa ou perfil. Casos graves vão direto para revisão da equipe.</p>
             </div>
             <div className="cartao">
-              <h3>Afinidade sem nota</h3>
-              <p>Nada de pontuação ou ranking de pessoas: só baixa, média ou alta, e os interesses em comum.</p>
-            </div>
-            <div className="cartao">
+              <span className="cartao-icone" aria-hidden="true">
+                <ShieldCheck size={24} />
+              </span>
               <h3>Dicas de primeiro encontro</h3>
               <p>Antes de confirmar presença, o app lembra o básico: prefira lugares públicos e avise alguém.</p>
             </div>
@@ -236,10 +218,10 @@ export default function Home() {
       <section className="lista secao-clara" id="lista" aria-labelledby="lista-titulo">
         <div className="container lista-grid">
           <div>
-            <h2 id="lista-titulo">Seja dos primeiros a usar no Rio</h2>
+            <h2 id="lista-titulo">Seja dos primeiros a usar</h2>
             <p className="secao-intro">
-              A versão de testes vai abrir para um grupo pequeno. Deixe seu e-mail e conte o que você mais quer: isso
-              decide o que construímos primeiro.
+              A versão de testes vai abrir para um grupo pequeno. Deixe seu e-mail e conte o que você mais quer (pode
+              marcar mais de uma opção): isso decide o que construímos primeiro.
             </p>
           </div>
           <WaitlistForm titulo={false} />

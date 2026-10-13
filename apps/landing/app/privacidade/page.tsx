@@ -28,7 +28,7 @@ export default function Privacidade() {
           <p>Quando você entra na lista de espera, guardamos:</p>
           <ul>
             <li>seu e-mail;</li>
-            <li>o que você mais quer do Partyu (a opção escolhida no formulário);</li>
+            <li>o que você mais quer do Partyu (as opções marcadas no formulário);</li>
             <li>seu bairro, se você informar (é opcional);</li>
             <li>
               de onde veio a visita: a página em que você se inscreveu, o site de origem e parâmetros de campanha do

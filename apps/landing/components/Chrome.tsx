@@ -1,12 +1,13 @@
 import Link from "next/link";
+import { Logo } from "@/components/Logo";
 import { ARTICLES, CONTACT_EMAIL } from "@/lib/site";
 
 export function Header() {
   return (
     <header className="topo">
       <div className="container topo-inner">
-        <Link href="/" className="logo" aria-label="Partyu — início">
-          partyu<span className="logo-ponto">.</span>
+        <Link href="/" className="logo-link" aria-label="Partyu — início">
+          <Logo />
         </Link>
         <Link href="/#lista" className="botao botao-pequeno">
           Entrar na lista
@@ -21,10 +22,8 @@ export function Footer() {
     <footer className="rodape">
       <div className="container rodape-inner">
         <div>
-          <p className="logo">
-            partyu<span className="logo-ponto">.</span>
-          </p>
-          <p className="rodape-texto">Eventos reais do Rio, com a galera certa. App em construção.</p>
+          <Logo />
+          <p className="rodape-texto">Eventos reais, com a galera certa. App em construção.</p>
         </div>
         <nav aria-label="Guias">
           <p className="rodape-titulo">Guias</p>
@@ -51,7 +50,7 @@ export function Footer() {
           </ul>
         </nav>
       </div>
-      <p className="container rodape-copy">© 2026 Partyu · Rio de Janeiro</p>
+      <p className="container rodape-copy">© 2026 Partyu</p>
     </footer>
   );
 }

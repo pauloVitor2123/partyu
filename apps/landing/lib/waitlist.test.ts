@@ -3,7 +3,7 @@ import { CONSENT_VERSION, parseWaitlist } from "./waitlist";
 
 const valid = {
   email: "  Pessoa@Exemplo.com ",
-  interesse: "achar_companhia",
+  interesses: ["criar_evento", "achar_companhia"],
   bairro: "Botafogo",
   consent: true,
   pagina: "/",
@@ -17,7 +17,7 @@ describe("parseWaitlist", () => {
       ok: true,
       entry: {
         email: "pessoa@exemplo.com",
-        interesse: "achar_companhia",
+        interesses: ["achar_companhia", "criar_evento"],
         bairro: "Botafogo",
         pagina: "/",
         utm_source: "instagram",
@@ -39,8 +39,23 @@ describe("parseWaitlist", () => {
     });
   });
 
-  it("rejeita interesse fora da lista", () => {
-    expect(parseWaitlist({ ...valid, interesse: "namoro" }).ok).toBe(false);
+  it("aceita uma única opção", () => {
+    const result = parseWaitlist({ ...valid, interesses: ["organizar_grupo"] });
+    expect(result.ok && "entry" in result && result.entry.interesses).toEqual(["organizar_grupo"]);
+  });
+
+  it("remove opções repetidas", () => {
+    const result = parseWaitlist({ ...valid, interesses: ["criar_evento", "criar_evento"] });
+    expect(result.ok && "entry" in result && result.entry.interesses).toEqual(["criar_evento"]);
+  });
+
+  it("exige pelo menos uma opção", () => {
+    expect(parseWaitlist({ ...valid, interesses: [] }).ok).toBe(false);
+    expect(parseWaitlist({ ...valid, interesses: undefined }).ok).toBe(false);
+  });
+
+  it("rejeita opção fora da lista", () => {
+    expect(parseWaitlist({ ...valid, interesses: ["achar_companhia", "namoro"] }).ok).toBe(false);
   });
 
   it("exige consentimento explícito", () => {
